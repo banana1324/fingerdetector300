@@ -40,9 +40,13 @@ while True:
   select_result = uselect.select([stdin], [], [], 0)
 
   while select_result[0]:
-
-    input_character = stdin.read(1)
-    input_char_int = int("input_character",2)
+##num of light to turn on
+    int turnOn = 0;
+    for(int x in range(0,10):
+       if(stdin.read(1) == true):
+            turnON += 1
+    
+    
 
     if hand == True:
         hand = '0'
