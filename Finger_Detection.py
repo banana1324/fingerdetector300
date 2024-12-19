@@ -115,10 +115,10 @@ with mp_hands.Hands(
             #[ison,ison,ison,ison...]
             for(x in range(0,finger_info[0] - 1)):
                 #left hand first
-                lights[x] = True
+                lights[x] = 1
             #righthand
             for(x in range(5, finger_info[1] + 4)):
-                lights[x] = True
+                lights[x] = 0
                 
 
     # Print information in the terminal
@@ -128,6 +128,7 @@ with mp_hands.Hands(
     
         for(x in range(0,9)):
             serial_connection.write(lights[x].encode())
+            
     
 #     if len(finger_info) != 0:
 #         
