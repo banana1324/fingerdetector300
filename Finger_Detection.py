@@ -113,11 +113,11 @@ with mp_hands.Hands(
             
             lights = []
             #[ison,ison,ison,ison...]
-            for(x in range(0,finger_info[0])):
+            for(x in range(0,finger_info[0] - 1)):
                 #left hand first
                 lights[x] = True
             #righthand
-            for(x in range(5, finger_info[1] + 5)):
+            for(x in range(5, finger_info[1] + 4)):
                 lights[x] = True
                 
 
