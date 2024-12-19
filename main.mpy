@@ -42,14 +42,15 @@ while True:
   while select_result[0]:
 ##num of light to turn on
     int turnOn = 0;
-    for(int x in range(0,10):
-       if(stdin.read(1) == true):
+    for(int x in range(0,9):
+       if(stdin.read(1) == True):
             turnON += 1
     if(turnOn <= 5):
         turn_on_LEDs(Left_LEDs, turnOn)
     if(turnOn > 5):
         turn_on_LEDs(right_LEDs, turnOn - 5);
-    
+    if(turnOn == 0):
+        turn_on_LEDs(right_LEDs, 0);
 
     if hand == True:
         hand = '0'
