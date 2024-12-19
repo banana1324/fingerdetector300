@@ -9,10 +9,11 @@ mp_drawing = mp.solutions.drawing_utils
 mp_drawing_styles = mp.solutions.drawing_styles
 mp_hands = mp.solutions.hands
 
-port = ""  # Adjust the port to match your setup
+port = "COM3"  # Adjust the port to match your setup
 baudrate = 115200
 # serial connection to talk to pico
 serial_connection = serial.Serial(port, baudrate)
+
 def calculate_distance(point1, point2):
     "Calculate the Euclidean distance between two points"
     return math.sqrt((point1.x - point2.x) ** 2 + (point1.y - point2.y) ** 2)
@@ -97,6 +98,7 @@ with mp_hands.Hands(
     
     finger_info = []
     total_fingers = 0
+    lights = [0,0,0,0,0,0,0,0,0,0]
 
     if results.multi_hand_landmarks:
         for hand_landmarks in results.multi_hand_landmarks:
@@ -111,14 +113,14 @@ with mp_hands.Hands(
             finger_info.append(finger_count)
             total_fingers += finger_count
             
-            lights = []
+            lights = [0,0,0,0,0,0,0,0,0,0]
             #[ison,ison,ison,ison...]
-            for(x in range(0,finger_info[0] - 1)):
+            
+            for x in range(0,total_fingers):
                 #left hand first
                 lights[x] = 1
-            #righthand
-            for(x in range(5, finger_info[1] + 4)):
-                lights[x] = 0
+                
+            
                 
 
     # Print information in the terminal
@@ -126,8 +128,9 @@ with mp_hands.Hands(
     
         #serial_connection.write(().encode())
     
-        for(x in range(0,9)):
-            serial_connection.write(lights[x].encode())
+    for x in range(0,9):
+        serial_connection.write(str(lights[x]).encode())
+    print(lights)
             
     
 #     if len(finger_info) != 0:
@@ -163,4 +166,3 @@ with mp_hands.Hands(
 cap.release()
 serial_connection.close()
 cv2.destroyAllWindows()
-
