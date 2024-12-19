@@ -45,7 +45,10 @@ while True:
     for(int x in range(0,10):
        if(stdin.read(1) == true):
             turnON += 1
-    
+    if(turnOn <= 5):
+        turn_on_LEDs(Left_LEDs, turnOn)
+    if(turnOn > 5):
+        turn_on_LEDs(right_LEDs, turnOn - 5);
     
 
     if hand == True:
