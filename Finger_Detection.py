@@ -117,7 +117,7 @@ with mp_hands.Hands(
                 #left hand first
                 lights[x] = True
             #righthand
-            for(x in range(5, 9)):
+            for(x in range(5, finger_info[1] + 5)):
                 lights[x] = True
                 
 
